@@ -11,6 +11,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@CrossOrigin
 @RestController
 @RequestMapping("/api/v1/")
 public class ProductController {
@@ -37,6 +40,11 @@ public class ProductController {
                         .category(product.getCategory())
                         .type(product.getType())
                         .build());
+    }
+
+    @GetMapping("getByCategoryAndType")
+    public List<Product> getByCategoryAndType(@RequestParam String categoryName, @RequestParam String typeName){
+        return this.iProduct.findProductByCategoryNameAndTypeNameOrderByOrders(categoryName,typeName);
     }
 
     @PatchMapping("/updateProduct/")

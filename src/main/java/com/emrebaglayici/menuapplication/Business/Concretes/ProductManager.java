@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -34,6 +35,8 @@ public class ProductManager implements IProduct {
         log.info("Product created successfully -> "+dto.toProduct());
         this.productRepository.save(dto.toProduct());
     }
+
+
 
     @Override
     public Page<Product> listProducts(Pageable pageable) {
@@ -64,5 +67,10 @@ public class ProductManager implements IProduct {
         log.info("Product deleted successfully");
         this.productRepository.delete(product);
         return product;
+    }
+
+    @Override
+    public List<Product> findProductByCategoryNameAndTypeNameOrderByOrders(String categoryName, String typeName) {
+        return this.productRepository.findProductByCategoryNameAndTypeNameOrderByOrders(categoryName,typeName);
     }
 }
