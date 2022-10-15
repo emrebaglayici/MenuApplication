@@ -8,6 +8,9 @@ import com.emrebaglayici.menuapplication.Controllers.Dtos.ProductUpdateDto;
 import com.emrebaglayici.menuapplication.Entities.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.SortDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +32,8 @@ public class ProductController {
     }
 
     @GetMapping("products")
-    public Page<ProductListDto> listProducts(Pageable pageable){
+    public Page<ProductListDto> listProducts(@PageableDefault(page = 0, size = 100) @SortDefault.SortDefaults
+            ({@SortDefault(sort = "orders", direction = Sort.Direction.ASC)})Pageable pageable){
         return iProduct.listProducts(pageable)
                 .map(product ->ProductListDto.builder()
                         .id(product.getId())
