@@ -2,6 +2,20 @@
     text-align: center;
 
 }
+a{
+    text-decoration: none;
+    color: #193E72;
+}
+.footer{
+    margin-top: 50px;
+    line-height: 1px;
+    color: #193E72;
+}
+
+.insta-logo{
+    display: block;
+    margin: 0 auto;
+}
 .product-types {
     text-align: center;
     color: #C49A6C;
@@ -10,6 +24,18 @@ caption{
     display: block;
     text-align: center;
 
+}
+.product-types-food{
+    float: left;
+    color: #C49A6C;
+}
+.custom-short-info-food{
+    color: white;
+}
+.align-left-food{
+    float: left;
+    color: white;
+    font-size: 25px;
 }
 table h1{
     text-align: center;
@@ -26,11 +52,19 @@ table h1{
 .custom-short-info{
     color: #193E72;
 }
+td,.food{
+    color: white;
+}
 td {
     color: #193E72;
     font-size: 25px;
 }
+.logo-center{
 
+    display: block;
+    margin: 0 auto;
+    padding-top: 20px;
+}
 .center {
     width: 60%;
     margin-left: auto;
