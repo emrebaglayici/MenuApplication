@@ -26,6 +26,7 @@ import LogoFood from "./layouts/LogoFood";
 import Footer from "./Footer";
 import Login from "./layouts/Admin/Login";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Dashboard from "./layouts/Admin/Dashboard";
 
 function App() {
     return (
@@ -67,6 +68,9 @@ function App() {
                     }/>
                     <Route path="/admin" element={
                         <Login/>
+                    }/>
+                    <Route path="/dashboard" element={
+                        <Dashboard/>
                     }/>
                     <Route path="*" element={
                         <div>Not Found</div>
