@@ -37,40 +37,37 @@ function App() {
                 <Routes>
                     <Route path="/" element={
                         <>
-                        <Container maxWidth="lg" sx={{bgcolor: '#F2EDE5', height: 'auto'}}>
-                            <Navi/>
-                            <LogoDrink/>
-                            <Hot/>
-                            <Cold/>
-                            <Beverage/>
-                            <Fresh/>
-                            <Detox/>
-                            <IceTea/>
-                            <Footer/>
-                        </Container>
-                        <Container maxWidth="lg" sx={{ bgcolor: '#18425C', height: 'auto' ,color:'white' }}>
-                        <LogoFood/>
-                        <Breakfast/>
-                        <Bowl/>
-                        <Toast/>
-                        <Starter/>
-                        <Quesadilla/>
-                        <HealthyBowlSalad/>
-                        <Salad/>
-                        <Pizzetta/>
-                        <Burger/>
-                        <Penne/>
-                        <Noodle/>
-                        <MainCourse/>
-                        <Dessert/>
-                        </Container>
+                            <Container maxWidth="lg" sx={{bgcolor: '#F2EDE5', height: 'auto'}}>
+                                <Navi/>
+                                <LogoDrink/>
+                                <Hot/>
+                                <Cold/>
+                                <Beverage/>
+                                <Fresh/>
+                                <Detox/>
+                                <IceTea/>
+                                <Footer/>
+                            </Container>
+                            <Container maxWidth="lg" sx={{ bgcolor: '#18425C', height: 'auto' ,color:'white' }}>
+                                <LogoFood/>
+                                <Breakfast/>
+                                <Bowl/>
+                                <Toast/>
+                                <Starter/>
+                                <Quesadilla/>
+                                <HealthyBowlSalad/>
+                                <Salad/>
+                                <Pizzetta/>
+                                <Burger/>
+                                <Penne/>
+                                <Noodle/>
+                                <MainCourse/>
+                                <Dessert/>
+                            </Container>
                         </>
                     }/>
                     <Route path="/admin" element={
                         <Login/>
-                    }/>
-                    <Route path="/dashboard" element={
-                        <Dashboard/>
                     }/>
                     <Route path="*" element={
                         <div>Not Found</div>
