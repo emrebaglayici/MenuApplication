@@ -26,7 +26,6 @@ import LogoFood from "./layouts/LogoFood";
 import Footer from "./Footer";
 import Login from "./layouts/Admin/Login";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Dashboard from "./layouts/Admin/Dashboard";
 
 function App() {
     return (

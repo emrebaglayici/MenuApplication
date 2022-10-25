@@ -1,45 +1,79 @@
 import React from "react";
-import { Text } from '@mantine/core';
-import { DataTable } from 'mantine-datatable';
-
-export default function Dashboard() {
-    return (
-        <DataTable
-            withBorder
-            borderRadius="sm"
-            withColumnBorders
-            striped
-            highlightOnHover
-            // provide data
-            records={[
-                { id: 1, name: 'Joe Biden', bornIn: 1942, party: 'Democratic' },
-                // more records...
-            ]}
-            // define columns
-            columns={[
-                {
-                    accessor: 'id',
-                    // this column has a custom title
-                    title: '#',
-                    // right-align column
-                    textAlignment: 'right',
-                },
-                { accessor: 'name' },
-                {
-                    accessor: 'party',
-                    // this column has custom cell data rendering
-                    render: ({ party }) => (
-                        <Text weight={700} color={party === 'Democratic' ? 'blue' : 'red'}>
-                            {party.slice(0, 3).toUpperCase()}
-                        </Text>
-                    ),
-                },
-                { accessor: 'bornIn' },
-            ]}
-            // execute this callback when a row is clicked
-            onRowClick={({ name, party, bornIn }) =>
-                alert(`You clicked on ${name}, a ${party.toLowerCase()} president born in ${bornIn}.`)
+import {Formik,Form,useFormik} from "formik";
+import ProductPostService from "../../services/Admin/productPostService";
+import { Button } from "semantic-ui-react";
+import TextInput from "../../utilities/TextInput";
+import Navi from "../../services/Admin/Navi";
+export default function Dashboard({...props}) {
+    let productPostService=new ProductPostService();
+    const onSubmit=(values)=>{
+        alert(JSON.stringify(values));
+        productPostService.add(values).then(function (response){
+            console.log(response);
+        })
+            .catch(function (error){
+                console.log(error);
+            });
+    };
+    const formik=useFormik({
+        initialValues:{
+            name:"",
+            shortInfo:"",
+            price:"",
+            order:"",
+            category:{
+                name:""
+            },
+            type:{
+                name:""
             }
-        />
+        },validateOnBlur:true,onSubmit,
+    });
+    return (
+
+        <Formik initialValues={formik.initialValues}>
+            <Form className="ui form" onSubmit={formik.handleSubmit}>
+                <h2>Add Product</h2>
+                <TextInput
+                    name="name"
+                    placeholder="Product Name"
+                    value={formik.values.name}
+                    onChange={formik.handleChange}
+                />
+                <TextInput
+                    name="shortInfo"
+                    placeholder="Product Short Info"
+                    value={formik.values.shortInfo}
+                    onChange={formik.handleChange}
+                />
+                <TextInput
+                    name="price"
+                    placeholder="Price"
+                    value={formik.values.price}
+                    onChange={formik.handleChange}
+                />
+                <TextInput
+                    name="order"
+                    placeholder="Product Order"
+                    value={formik.values.order}
+                    onChange={formik.handleChange}
+                />
+                <TextInput
+                    name="category.name"
+                    placeholder="Category name"
+                    value={formik.values.category.name}
+                    onChange={formik.handleChange}
+                />
+                <TextInput
+                    name="type.name"
+                    placeholder="Type Name"
+                    value={formik.values.type.name}
+                    onChange={formik.handleChange}
+                />
+                <Button color="green" type="submit">
+                    Add
+                </Button>
+            </Form>
+        </Formik>
     );
 }
